@@ -1,5 +1,5 @@
 class Home {
-	constructor () {
-		this.name = 'Liu Qi'
+	constructor (name) {
+		this.name = name
 	}
 }
