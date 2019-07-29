@@ -6,17 +6,18 @@ var babel = require('gulp-babel')
 
 sass.compiler = require('node-sass')
 
- gulp.task("default", function () {
-  return gulp.src("src/app.js")
-    .pipe(babel())
-    .pipe(gulp.dest("dist"));
-});
+ gulp.task("default", ['home', 'public']);
 
- gulp.task("home", function () {
+ gulp.task("home", ['homeHtml'], function () {
  	return gulp.src("src/home/**/*.js")
  		.pipe(babel())
  		.pipe(uglify())
- 		.pipe(gulp.dest("dist/home"));
+ 		.pipe(gulp.dest("dist/home"))
+ })
+
+ gulp.task('homeHtml', function () {
+ 	return gulp.src("src/home/**/*.html")
+ 		.pipe(gulp.dest("dist/home"))
  })
 
  gulp.task('sass', function () {
